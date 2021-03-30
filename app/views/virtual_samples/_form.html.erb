@@ -1,7 +1,7 @@
 <%= form_with(model: [@project, virtual_sample], url: project_virtual_sample_path, local: true) do |form| %>
   <% if virtual_sample.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(virtual_sample.errors.count, "error") %> prohibited this virtual_sample from being saved:</h2>
+      <h2><%= pluralize(virtual_sample.errors.count, "error") %> prohibited this project from being saved:</h2>
 
       <ul>
         <% virtual_sample.errors.full_messages.each do |message| %>
@@ -10,17 +10,37 @@
       </ul>
     </div>
   <% end %>
+  
+  
+  <div class="form-group row text-left">
+    
+    <div class="col-6">
+      <%= form.label :video_link, "Video", :class => "col-form-label" %>
+      <%= form.file_field :video_link, accept: 'video/mp4', :class => "form-control-file" %>
 
-  <div class="col-sm-4">
-      <div class="form-group row">
-        <%= form.label :video_link, "Link", :class => "col-sm-6 col-form-label" %>
-        <div class="col-sm-6">
-          <%= form.text_field :video_link, min:0, max: 2, :class => "form-control" %>
-        </div>
-      </div>
+      <%= form.label :poster_link, "Poster", :class => "col-form-label" %>
+      <%= form.file_field :poster_link, :class => "form-control-file" %>
+
+      <%= form.label :img1, "Imagen 1", :class => "col-form-label" %>
+      <%= form.file_field :img1, :class => "form-control-file" %>
+
+      <%= form.label :img1, "Imagen 2", :class => "col-form-label" %>
+      <%= form.file_field :img2, :class => "form-control-file" %>
+
+      <%= form.label :img3, "Imagen 3", :class => "col-form-label" %>
+      <%= form.file_field :img3, :class => "form-control-file" %>
+    </div>
+
+    <div class="col-6">
+      <%= form.label :contact_data, "Datos de Contacto", :class => "form-label" %>
+      <%= form.text_area :contact_data, :class => "form-control", :style => "height:100%;" %>
+    </div>
+    
   </div>
 
-  <div class="actions">
+  <div class="actions row text-center">
     <%= form.submit :Guardar, class: 'btn btn-light' %>
+    <%= link_to 'Cancelar', projects_path, class: 'btn btn-light' %>
   </div>
 <% end %>
+
