@@ -15,25 +15,22 @@
   <div class="form-group row text-left">
     
     <div class="col-6">
-      <%= form.label :video_link, "Video", :class => "col-form-label" %>
-      <%= form.file_field :video_link, accept: 'video/mp4', :class => "form-control-file" %>
+      <%= form.label :icon_image, "Imagen de icono", :class => "col-sm-6 col-form-label" %>
+      <%= form.file_field :icon_image %>
 
-      <%= form.label :poster_link, "Poster", :class => "col-form-label" %>
-      <%= form.file_field :poster_link, :class => "form-control-file" %>
+      <%= form.label :about_file, "Archivo Tecnico", :class => "col-sm-6 col-form-label" %>
+      <%= form.file_field :about_file %>
 
-      <%= form.label :img1, "Imagen 1", :class => "col-form-label" %>
-      <%= form.file_field :img1, :class => "form-control-file" %>
+      
 
-      <%= form.label :img1, "Imagen 2", :class => "col-form-label" %>
-      <%= form.file_field :img2, :class => "form-control-file" %>
+      <%= form.label :images, "Imagenes adicionales", :class => "col-sm-6 col-form-label" %>
+      <%= form.file_field :images, multiple: true %>
 
-      <%= form.label :img3, "Imagen 3", :class => "col-form-label" %>
-      <%= form.file_field :img3, :class => "form-control-file" %>
     </div>
 
     <div class="col-6">
-      <%= form.label :contact_data, "Datos de Contacto", :class => "form-label" %>
-      <%= form.text_area :contact_data, :class => "form-control", :style => "height:100%;" %>
+      <%= form.label :video_link, "Link", :class => "col-sm-6 col-form-label" %>
+      <%= form.text_field :video_link, min:0, max: 2, :class => "form-control" %>
     </div>
     
   </div>

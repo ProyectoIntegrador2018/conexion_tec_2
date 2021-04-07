@@ -1,26 +1,53 @@
-<%= form_with(model: virtual_sample, url: project_virtual_sample_path, local: true) do |form| %>
-    <% if virtual_sample.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(virtual_sample.errors.count, "error") %> prohibited this virtual_sample from being saved:</h2>
-  
-        <ul>
-          <% virtual_sample.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  
-    <div class="col-sm-4">
-        <div class="form-group row">
-          <%= form.label :video_link, "Link", :class => "col-sm-6 col-form-label" %>
-          <div class="col-sm-6">
-            <%= form.text_field :video_link, min:0, max: 2, :class => "form-control" %>
-          </div>
-        </div>
-    </div>
-  
-    <div class="actions">
-      <%= form.submit :Guardar, class: 'btn btn-light' %>
+<%= form_with(model: [@project, virtual_sample], url: project_virtual_sample_path, local: true) do |form| %>
+  <% if virtual_sample.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(virtual_sample.errors.count, "error") %> prohibited this virtual_sample from being saved:</h2>
+
+      <ul>
+        <% virtual_sample.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
+
+  <div class="col-sm-4">
+    <div class="form-group row">
+      <%= form.label :icon_image, "Imagen de icono", :class => "col-sm-6 col-form-label" %>
+      <div class="col-sm-6">
+        <%= form.file_field :icon_image %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="form-group row">
+      <%= form.label :about_file, "Archivo Tecnico", :class => "col-sm-6 col-form-label" %>
+      <div class="col-sm-6">
+        <%= form.file_field :about_file %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="form-group row">
+      <%= form.label :video_link, "Link", :class => "col-sm-6 col-form-label" %>
+      <div class="col-sm-6">
+        <%= form.text_field :video_link, min:0, max: 2, :class => "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="form-group row">
+      <%= form.label :images, "Imagenes adicionales", :class => "col-sm-6 col-form-label" %>
+      <div class="col-sm-6">
+        <%= form.file_field :images, multiple: true %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :Guardar, class: 'btn btn-light' %>
+  </div>
+<% end %>
