@@ -1,3 +1,7 @@
 <div class="content">
-  <%= render 'form', project: @project %>
+  <% if (Time.now >= @project.edition.phases[1].time_limits[0].start_date  && Time.now <= @project.edition.phases[1].time_limits[0].start_date) || current_user.administrator? %>
+    <%= render 'form', project: @project %>
+  <% else %>
+    <h2> No puedes modificar los datos de un proyecto en esta etapa del evento </h2>
+  <% end %>
 </div>
