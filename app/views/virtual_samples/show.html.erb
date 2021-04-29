@@ -18,7 +18,6 @@
 
   <div class='sample-description row'>
 
-
     <% if @virtual_sample.video_file.attached? %>
       <div class='col-4'>
         <%= video_tag url_for(@virtual_sample.video_file), controls: true, class: 'media' %>
